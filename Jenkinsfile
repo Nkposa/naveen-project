@@ -17,10 +17,12 @@ pipeline{
                 environment{
                     image = "alpine"
                     tag = "latest"
+                    registry = "docker.io"
                 }
                 steps{
                     echo "image: ${image}"
                     echo "tag: ${tag}"
+                    echo "registry: ${registry}"
 
                 }
            }
