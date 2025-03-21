@@ -13,6 +13,17 @@ pipeline{
             }
 
            }
+           stage(checking stage variables){
+                environment{
+                    image = "alpine"
+                    tag = "latest"
+                }
+                steps{
+                    echo "image: ${image}"
+                    echo "tag: ${tag}"
+
+                }
+           }
 
         }
 
