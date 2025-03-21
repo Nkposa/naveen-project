@@ -26,6 +26,22 @@ pipeline{
 
                 }
            }
+           stage("checking Jenkins env variables"){
+            steps{
+                echo "JENKINS_HOME: ${JENKINS_HOME}"
+                echo "JENKINS_URL: ${JENKINS_URL}"
+                echo "BUILD_TAG: ${BUILD_TAG}"
+                echo "BUILD_NUMBER: ${BUILD_NUMBER}"
+                echo "JOB_NAME: ${JOB_NAME}"
+                echo "BUILD_ID: ${BUILD_ID}"
+                echo "BUILD_DISPLAY_NAME: ${BUILD_DISPLAY_NAME}"
+                echo "BUILD_URL: ${BUILD_URL}"
+                echo "EXECUTOR_NUMBER: ${EXECUTOR_NUMBER}"
+                echo "NODE_NAME: ${NODE_NAME}"
+                echo "WORKSPACE: ${WORKSPACE}"
+                
+            }
+           }
 
         }
 
