@@ -13,7 +13,7 @@ pipeline{
             }
 
            }
-           stage(checking stage variables){
+           stage('checking stage variables'){
                 environment{
                     image = "alpine"
                     tag = "latest"
