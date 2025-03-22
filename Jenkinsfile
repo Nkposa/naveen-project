@@ -17,15 +17,15 @@ pipeline{
                 }
             }
             stage('accessing creds using credentials method'){
-                stage{
-                    withCredentials = ([usernamePassword(credentialsId: 'server-creds'), usernameVariable = 'myuser', passwordVariable = 'mypwd'])
-                    steps{
+                steps{
+                    withCredentials([usernamePassword(credentialsId: 'server-creds'), usernameVariable = 'myuser', passwordVariable = 'mypwd'])
+                    
                         sh '''
                             echo my_user_nameis: ${myusr}
                             echo my_pwd: ${mypwd}
                             
                         '''
-                    }
+                    
                 }
             }
 
