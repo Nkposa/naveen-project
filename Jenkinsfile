@@ -1,24 +1,23 @@
 pipeline {
     agent any
-    environment {
-        user = 'naveen'
-        password = 'password'
+    parameters {
+        string(name: 'environment', defaultValue: 'dev', description: 'Provide the environment')
+        booleanParam(name: 'run_tests', defaultValue: true, description: 'Run tests if true')
     }
     stages {
-        stage('accessing user and password') {
-            parallel {
-                stage('access user') {
-                    steps {
-                        sh 'echo ${user}'
-                        sh 'sleep 60'
-                    }
+        stage('access env params') {
+            when {
+                expression {
+                    return params.run_tests == true
                 }
-                stage('accessing pwd') {
-                    steps {
-                        sh 'echo ${password}'
-                        sh 'sleep 30'
-                    }
-                }
+            }
+            steps {
+                sh 'echo ${params.run_tests}'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'echo ${params.environment}'
             }
         }
     }
