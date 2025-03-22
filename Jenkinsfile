@@ -10,6 +10,7 @@ pipeline{
                     echo ${servercreds}
                     echo ${servercreds_USR}
                     echo ${servercreds_PSW}
+                    echo ${servercreds_PSW}
 
                     '''
 
