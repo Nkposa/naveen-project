@@ -1,27 +1,29 @@
-pipeline {
+pipeline{
     agent any
-    environment {
-        servercreds = credentials('server-creds')
+    environment{
+        user = 'naveen'
+        password = 'password'
     }
-    stages {
-        stage('accessing creds') {
-            steps {
-                sh '''
-                echo ${servercreds}
-                echo ${servercreds_USR}
-                echo ${servercreds_PSW}
-                '''
-            }
-        }
-        stage('accessing creds using credentials method') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'server-creds', usernameVariable: 'myuser', passwordVariable: 'mypwd')]) {
-                    sh '''
-                    echo my_user_name is: ${myuser}
-                    echo my_pwd: ${mypwd}
-                    '''
+    stages{
+        stage('acessing user and pass3ord'){
+            parallel{
+                stages{
+                    stage('access user'){
+                        steps{
+                        sh 'echo ${user}'
+                        sh 'sleep 60'
+                        }
+                    }
+                    stage('accessing pwd'){
+                        steps{
+                            sh 'echo ${password}'
+                            sh 'sleep 30'
+                        }
+
+                    }
                 }
             }
         }
     }
+
 }
